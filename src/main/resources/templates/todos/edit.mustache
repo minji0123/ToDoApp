@@ -1,0 +1,24 @@
+{{>layouts/header}}
+
+{{#todo}}
+    <form class="todo-list" action="/todos/update" method="post">
+        <input name="id" type="hidden" value="{{id}}"/>
+        <!--id 값 전달-->
+        <div class="mb-3">
+            <label class="form-label">할일</label>
+            <input type="text" class="form-control" name="title" value="{{title}}">
+            <!-- name = DTO -->
+        </div>
+        <div class="mb-3">
+            <label class="form-label">상세</label>
+            <textarea class="form-control" cols="30" rows="3" name="content">{{content}}</textarea>
+            <!-- name = DTO -->
+        </div>
+        <button type="submit" class="btn btn-outline-info">확인</button>
+
+        <p class="float-r-style"><a href="/todos/{{id}}">Back</a></p>
+        <div class="clear-style"></div>
+    </form>
+{{/todo}}
+
+{{>layouts/footer}}
