@@ -1,7 +1,6 @@
+
 html {
-  background: #ddd;
-}
-html {
+  background: #eff3f7;
   height: 100%;
   display: flex;
 }
@@ -18,6 +17,10 @@ h1 {
     text-align: center;
     font-family: 'Rowdies', cursive;
     font-weight: 700;
+    margin-bottom: 10px;
+}
+.material-icons-outlined.md-24 {
+    font-size: 24px;
 }
 
 .float-r-style{
@@ -33,8 +36,9 @@ h1 {
 .todo-list {
   background: #fff;
   font-size: 20px;
-  max-width: 15em;
+  max-width: 20em;
   margin: auto;
+  margin-top: 48px;
   padding: 0.5em 1em;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
 }
@@ -59,13 +63,13 @@ h1 {
 .todo__text {
   color: #135156;
   transition: all 0.4s linear 0.4s;
+  margin-left: 5px;
 }
 .todo__icon {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  max-width: 5em;
   height: auto;
   margin: auto;
   fill: none;
@@ -159,6 +163,13 @@ h1 {
     font-family: 'Rowdies', cursive;
     font-weight: 300;
 }
+.index-todo-btn {
+    margin-top: 23px;
+}
+.index-todo-btn-edit {
+    margin-left: 15px;
+}
+
 
 .show-list{
   max-width: 35em;

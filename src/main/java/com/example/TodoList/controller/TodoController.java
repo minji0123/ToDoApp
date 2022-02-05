@@ -38,7 +38,8 @@ public class TodoController {
         Todo saved = todoRepository.save(todoEntity);
         log.info(saved.toString());
 
-        return "redirect:/todos/" + saved.getId();
+//        return "redirect:/todos/" + saved.getId();
+        return "redirect:/todos/";
     }
 
     // 전체목록 페이지
@@ -79,8 +80,8 @@ public class TodoController {
             Todo reSaved = todoRepository.save(todoEntity);
             log.info(reSaved.toString());
         }
-
-        return "redirect:/todos/" + todoEntity.getId();
+        return "redirect:/todos/";
+//        return "redirect:/todos/" + todoEntity.getId();
     }
 
     // 글 삭제
