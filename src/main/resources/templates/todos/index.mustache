@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-8">
         <label class="todo">
-            <input class="todo__state" type="checkbox" />
+            <input class="todo__state" type="checkbox" id="{{id}}" value="{{completed}}" onclick="checkbox_Checked(this)"/>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
                 <use xlink:href="#todo__line" class="todo__line"></use>
                 <use xlink:href="#todo__box" class="todo__box"></use>
@@ -51,5 +51,53 @@
     <p class="index-todo-link"><a href="/todos/new">new</a></p>
 </div>
 
+<script>
+
+$("input:checkbox[value='true']").prop("checked",true); // 채크됨
+$("input:checkbox[value='false']").prop("checked",false); //체크안됨
+
+function checkbox_Checked(this_checkbox){
+    console.log(this_checkbox);
+    console.log($(this_checkbox));
+
+    const checked = $(this_checkbox).prop("checked");
+    const id = $(this_checkbox).prop("id");
+
+    console.log(checked);
+    console.log(id);
+
+    const checkbox_status = {  // Json 키 값 = Dto 키 값
+        "id" : id,
+        "completed" : checked
+    };
+    console.log(checkbox_status);
+
+    // 2. fetch() - 수정 REST API 호출
+    const url = "/todos/update/" +checkbox_status.id;
+    fetch(url, {
+        method: "PATCH",                         // PATCH 요청을 보낼거다.
+        body: JSON.stringify(checkbox_status),          // comment JS 객체(수정된 댓글)을 JSON 으로 바꿔서 보낸다.
+        headers: {
+            "Content-Type": "application/json" // body 에 실어서 보낸게 application/json 타입이다. (여기 안에는 json 이 들어있엉)
+        }
+    }).then(response => {
+            // http 응답 코드에 따른 메세지 출력
+            const msg = (response.ok)? "댓글이 수정되었습니다." : "댓글 수정 실패!";
+
+<!--            if (checked === false){-->
+<!--                // 현재 페이지 새로고침-->
+<!--                window.location.reload();-->
+<!--            }else{-->
+<!--                setTimeout(function(){-->
+<!--                    window.location.reload();-->
+<!--                    }, 1000);-->
+
+<!--            }-->
+
+     });
+
+}
+
+</script>
 
 {{>layouts/footer}}

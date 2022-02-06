@@ -84,6 +84,7 @@ public class TodoController {
 //        return "redirect:/todos/" + todoEntity.getId();
     }
 
+
     // 글 삭제
     @GetMapping("/todos/{id}/delete")
     public String delete (@PathVariable Long id, RedirectAttributes rttr){
